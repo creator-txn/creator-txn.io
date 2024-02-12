@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "CREATOR TXN",
     description: "Creator, Developer & Artist",
-    url: "https://localhost:3000",
+    url: "https://creator-txn-io.vercel.app/",
     siteName: "CREATOR TXN",
     locale: "en_UK",
     type: "website",
@@ -32,7 +32,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const BOOTSTRAP_JS_CDN = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js";
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${nunito.variable}`}>
