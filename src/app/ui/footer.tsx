@@ -6,9 +6,9 @@ const Footer = () => {
   const currentDate = new Date();
 
   return (
-    <footer className="footer">
+    <footer className="footer mt-5">
       <small>
-        Copyright &copy; {currentDate.getFullYear()} CREATOR TXN
+        {currentDate.getFullYear()} Copyright &copy;  CREATOR TXN
       </small>
     </footer>
   );
