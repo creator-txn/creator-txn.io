@@ -1,0 +1,100 @@
+---
+title: 📁Block Element Modifier (B.E.M) | Cheatsheet 
+description: BEM, which stands for Block Element Modifier, is a naming convention for CSS classes.
+publishedAt: 2023-12-16
+image: /images/blog/blog-post-2.jpg
+---
+
+<h2 className="mb-4">📓 | A Cheatsheet For B.E.M</h2>
+
+**B.E.M**, which stands for **Block Element Modifier**, is a **naming convention** for **CSS** *classes*. It helps in creating *modular* and *maintainable* stylesheets. Here's a quick *cheatsheet* for **B.E.M**:
+
+<hr className="mt-3 mb-5" />
+### ▪◼ B.E.M Structure: ◼▪ 
+
+1. **Block (*.block*):**
+- Represents a high-level component or module.
+- **Example:** *.navbar*, *.button*, *.card*
+
+2. **Element (*.block__element*):**
+- Represents a **part** of the block.
+- Should be a child of the block.
+- **Example:** *.navbar__item*, *.button__icon*, *.card__title*
+
+3. **Modifier (*.block--modifier* or *.block__element--modifier*):**
+- Represents a **different state** or version of the **block** or **element**.
+- **Example:** *.button--disabled*, *.card__title--large*
+
+<hr className="mt-3 mb-5" />
+### ▪◼ Example: ◼▪
+
+```html
+<!-- Block -->
+<div class="card">
+    <!-- Element -->
+    <img class="card__image" src="...">
+    
+    <!-- Element -->
+    <div class="card__content">
+        <!-- Element -->
+        <h2 class="card__title">Title</h2>
+        
+        <!-- Element -->
+        <p class="card__text">Lorem ipsum...</p>
+        
+        <!-- Modifier -->
+        <button class="card__button card__button--primary">Read more</button>
+    </div>
+</div>
+```
+
+### ▪◼ B.E.M in CSS: ◼▪
+
+```css
+/* Block styles */
+.card {
+  /* ... */
+}
+
+/* Element styles */
+.card__image {
+  /* ... */
+}
+
+.card__content {
+  /* ... */
+}
+
+.card__title {
+  /* ... */
+}
+
+.card__text {
+  /* ... */
+}
+
+/* Modifier styles */
+.card__button {
+  /* ... */
+}
+
+.card__button--primary {
+  /* ... */
+}
+
+/* Modifier for an element */
+.card__title--large {
+  /* ... */
+}
+```
+
+### ▪◼ Benefits of B.E.M: ◼▪
+
+1. **Modularity:** Components are self-contained and can be reused easily.
+2. **Readability:** Class names are descriptive and easy to understand.
+3. **Maintainability:** Modifications and updates are less likely to affect other parts of the code.
+
+<hr className="mt-4 mb-5" />
+## 📦 Conclusion
+
+Remember, the key to B.E.M is consistency. Stick to the naming conventions and try to avoid unnecessary nesting for a cleaner and more maintainable codebase.

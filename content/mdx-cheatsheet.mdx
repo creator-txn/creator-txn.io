@@ -1,0 +1,125 @@
+---
+title: 📁Markdown eXtended (MDX) | Cheatsheet
+description: MDX (Markdown eXtended) is a popular syntax that allows you to seamlessly use JSX (React components) within Markdown documents.
+publishedAt: 2023-12-17
+image: /images/blog/blog-post-3.jpg
+---
+
+MDX (Markdown eXtended) is a popular syntax that allows you to seamlessly use JSX (React components) within Markdown documents. Here's a quick MDX cheatsheet:
+
+### Headers
+
+```md
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+```
+
+### Emphasis
+
+```md
+*italic*
+**bold**
+***bold and italic***
+```
+
+### Lists
+
+#### Unordered List
+
+```md
+- Item 1
+- Item 2
+  - Subitem A
+  - Subitem B
+```
+#### Ordered List
+
+```md
+1. Item 1
+2. Item 2
+   1. Subitem A
+   2. Subitem B
+```
+
+### Links
+
+```md
+[Link text](https://www.example.com)
+```
+
+### Images
+
+```md
+![Alt text](https://www.example.com/image.jpg)
+```
+
+### Blockquotes
+
+```md
+> This is a blockquote.
+```
+
+### Code
+
+Inline code: 
+```
+code
+```
+
+Code block:
+
+```javascript
+const code = "Hello, World!";
+console.log(code);
+```
+
+### Horizontal Line
+
+```md
+---
+```
+
+### Tables
+
+```md
+| Header 1 | Header 2 |
+| ---------|----------|
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+```
+
+### Embedding JSX/React Components
+
+```md
+import { MyComponent } from './MyComponent';
+
+<MyComponent prop1="value1" prop2="value2" />
+```
+
+### Components
+
+In MDX, you can use React components directly. If you have a React component called ***MyComponent***, you can include it in your MDX file like this:
+
+```jsx
+import MyComponent from './MyComponent';
+
+<MyComponent />
+```
+
+### Frontmatter
+
+MDX often supports frontmatter at the beginning of a file to add metadata. For example:
+
+```yaml
+---
+title: My MDX Document
+date: 2023-11-28
+author: John Doe
+---
+```
+
+This is a basic MDX cheatsheet, and there are more advanced features and configurations depending on the specific tools and frameworks you're using. Always refer to the documentation of the tools you are working with for more details.
