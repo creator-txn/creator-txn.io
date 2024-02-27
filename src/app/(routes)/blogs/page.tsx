@@ -1,3 +1,5 @@
+/* REACT | Suspense */
+import { Suspense } from "react";
 /* METADATA | [S.E.O] Search Engine Optimization */
 import type { Metadata } from "next";
 /* NEXT FEATURE | Link + Image */
@@ -11,6 +13,10 @@ import { VscCalendar } from "react-icons/vsc";
 import { compareDesc, format, parseISO } from "date-fns";
 /* CONTENTLAYER | Generated Blog Content w/ MDX & Built-In Type Support */
 import { allBlogs, Blog } from "contentlayer/generated";
+/* USER INTERFACE | React Components */
+import ViewCounter from "@/app/ui/view-counter";
+/* DATABASE QUERIES |  */
+import { getViewsCount } from "@/app/db/queries";
 
 /* METADATA TAGS | [S.E.O] */
 export const metadata: Metadata = {
@@ -60,6 +66,11 @@ function BlogPostPreview(blog: Blog) {
                 />
                 {format(parseISO(blog.publishedAt), 'LLLL d, yyyy')}
               </div>
+              {/* JSX code with 'Suspense' for lazy loading the 'Views' component */}
+              <Suspense fallback={<p style={{ marginTop: '0.5rem' }}>Loading...</p>}>
+                {/* Render the 'Views' component with the specified 'slug' */}
+                <Views slug={blog.slug} />
+              </Suspense>
             </div>
           </time>
           <p>{blog.description}</p>
@@ -98,6 +109,20 @@ export default function BlogsPage() {
           ))}
         </Row>
       </div>
+    </div>
+  );
+}
+
+/* Define an asynchronous function named 'Views' */
+async function Views({ slug }: { slug: string }) {
+  // Fetch the current view counts for the specific blog post using 'getViewsCount()'
+  let views = await getViewsCount();
+
+  // Return JSX structure for rendering the view counter
+  return (
+    <div style={{ marginTop: '0.5rem'}}>
+      {/* Render the 'ViewCounter' component with the fetched view counts and provided 'slug' */}
+      <ViewCounter allViews={views} slug={slug} />
     </div>
   );
 }
