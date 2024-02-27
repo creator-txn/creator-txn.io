@@ -6,7 +6,7 @@ import Script from "next/script";
 import { roboto, nunito } from "./ui/fonts";
 /* STYLESHEET | Global/Root */
 import "@/styles/globals.scss";
-/* USER INTERFACE | React Components  */
+/* USER INTERFACE | React Components */
 import NavigationBar from "./ui/navigation-bar";
 
 /* METADATA TAGS | [S.E.O] */

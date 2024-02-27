@@ -1,3 +1,5 @@
+/* REACT | Suspense, Cache */
+import { Suspense, cache } from "react";
 /* NEXT FEATURE | Link + Image + notFound() */
 import Link from "next/link";
 import Image from "next/image";
@@ -11,6 +13,11 @@ import { allBlogs, Blog } from "contentlayer/generated";
 /* METHOD2: Display Blog Post (MDX Content) Basic View
 import { useMDXComponent } from "next-contentlayer/hooks"; */
 import { Mdx } from "@/app/ui/mdx";
+/* USER INTERFACE | React Components */
+import ViewCounter from "@/app/ui/view-counter";
+/* DATABASE QUERIES |  */
+import { getViewsCount } from "@/app/db/queries";
+import { increment } from "@/app/db/actions";
 
 /* generateStaticParams function 
 - using a fetch request, the requests are automatically memoized.
@@ -82,6 +89,13 @@ export default async function BlogPostPage({
                 <span className="mx-1">{format(parseISO(blog.publishedAt), 'LLLL d, yyyy')}</span>
               </div>
             </time>
+            <div className="px-3 d-flex" id="createdBy">
+              {/* JSX code with 'Suspense' for lazy loading the 'Views' component */}
+              <Suspense fallback={<p style={{ marginTop: '0.5rem' }}>Loading...</p>}>
+                {/* Render the 'Views' component with the specified 'slug' */}
+                <Views slug={blog.slug} />
+              </Suspense>
+            </div>
           </div>
           {/* BLOG CONTENT W/ STYLING */}
           <Mdx code={blog.body.code} />
@@ -92,4 +106,19 @@ export default async function BlogPostPage({
       </div>
     </div>
   );
+}
+
+// Create a cached version of the 'increment' function
+let incrementViews = cache(increment);
+
+// Define asynchronous function named 'Views'
+async function Views({ slug }: { slug: string }) {
+  // Fetch the current view counts for the specified blog post using 'getViewsCount'.
+  let views = await getViewsCount();
+
+  // Increment the views count using the cached 'increment' function.
+  incrementViews(slug);
+
+  // Return the 'ViewCounter' component with the fetched view counts and provided 'slug'.
+  return <ViewCounter allViews={views} slug={slug} />;
 }
